@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input id="inputValue" type="text">
+    <button onclick="FibonacciValue()">submit</button>
+    <div>FIBONACCI SEIRES : <div id="output"></div> </div>
+
+    <script>
+        function FibonacciValue() {
+            var ValueOfinput = +document.getElementById("inputValue").value;
+            document.getElementById("inputValue").value = "";
+            if (ValueOfinput === 1){
+                document.getElementById("output").innerText = "0";
+            } else if (ValueOfinput === 2){
+                document.getElementById("output").innerText = "1";
+            }
+            else {
+                var series = "0, 1";
+                Lastnumber = 1;
+                secoundlastnumber = 0;
+                for (var i = 3; i <= ValueOfinput; i++) {
+                  var nextnumber = Lastnumber + secoundlastnumber ;
+                  series = series + ", " + nextnumber;
+                  Lastnumber = nextnumber;
+                  secoundlastnumber = Lastnumber;
+                }
+                document.getElementById("output").innerText = series;
+            }
+        };
+    </script>
+
+
+</body>
+
+</html>
