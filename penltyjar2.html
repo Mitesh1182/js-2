@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h3>Penlty Jar</h3>
 
     <p id="output">0</p>
-    <button onclick="PenlyJar()"> +10 </button>
-
+    <button onclick="PenlyJar()"> +10 </button><br><br>
+    <input id="inputValue" type="text"><br><br>
+    <button onclick="inputaddValue ()">submit</button>
     <script>
+        var JarValue = document.getElementById("output");
         function PenlyJar() {
-         var JarValue = document.getElementById("output") ;
-         JarValue.innerText = Number(JarValue.innerText) +  10;
-        };
+            JarValue.innerText = Number(JarValue.innerText) + 10;
+        }
+        function inputaddValue() {
+            var Input = +document.getElementById("inputValue").value;
+            document.getElementById("inputValue").value = "";
+            var Input2 = +document.getElementById("output").innerHTML;
+            var sum = Input + Input2;
+            document.getElementById("output").innerText = sum;
+        }
     </script>
 
 </body>
+
 </html>
