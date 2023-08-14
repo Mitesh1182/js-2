@@ -5,27 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
     <h3>Penlty Jar</h3>
+    <div id="Stage1" class="hide">
+        <div>Fix Penlty Value : <span id="FixValue">10</span></div>
+        <p id="output">0</p>
+        <button onclick="PenlyJar()"> fix penlty Value </button><br><br>
 
-    <p id="output">0</p>
-    <button onclick="PenlyJar()"> +10 </button><br><br>
-    <input id="inputValue" type="text"><br><br>
-    <button onclick="inputaddValue ()">submit</button>
+        <input id="inputValue" type="text">
+        <button onclick="inputaddValue ()">submit</button><br><br>
+    </div>
+    <div id="Stage2">
+        <input id="FixPenltyInputValue" type="text">
+        <button onclick="FixPentyValue ()"> Fix penlty Value</button>
+    </div>
+
     <script>
         var JarValue = document.getElementById("output");
+        var currentValue = 0;
+        var FixPenlty = 10;
+
         function PenlyJar() {
-            JarValue.innerText = Number(JarValue.innerText) + 10;
-        }
+            document.getElementById("output").innerText = currentValue + FixPenlty;
+            currentValue += FixPenlty;
+        };
+
+
+        function FixPentyValue() {
+            var PenltyInput = Number(document.getElementById("FixPenltyInputValue").value) 
+            PenltyInput.innerText  += Number(document.getElementById("output").innerText);
+            FixPenlty = PenltyInput 
+            document.getElementById("FixValue").innerText = FixPenlty;
+            document.getElementById("FixPenltyInputValue").value = "";
+
+            showStage1();
+        };
+
+
         function inputaddValue() {
             var Input = +document.getElementById("inputValue").value;
             document.getElementById("inputValue").value = "";
-            var Input2 = +document.getElementById("output").innerHTML;
-            var sum = Input + Input2;
-            document.getElementById("output").innerText = sum;
-        }
+           document.getElementById("output").innerText = currentValue + Input;
+           currentValue += Input;
+        };
+
+
+         function showStage1(){
+             document.getElementById("Stage1").classList.remove("hide");
+             document.getElementById("Stage2").classList.add("hide");
+        };
     </script>
 
 </body>
